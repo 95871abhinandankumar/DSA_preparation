@@ -46,26 +46,35 @@ public class quick_sort_takingFirstAsPivot
     }
     static int partition(int arr[], int lf, int rt)
     {
-        int i = lf-1;
+        int pi = arr[lf];
+        int i = lf;
+        lf += 1;
         
-
-        for(int j = lf ; j <= rt-1 ; j++)
+        while(lf <= rt)
         {
-            if(arr[rt] > arr[j])
+            while(lf <= rt && pi > arr[lf])
             {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                lf++;
+            }
+            while(pi < arr[rt])
+            {
+                rt--;
+            }
+            if(lf <= rt)
+            {
+                int temp = arr[lf];
+                arr[lf] = arr[rt];
+                arr[rt] = temp;
+                lf++;
+                rt--;
             }
         }
-        int temp = arr[i+1];
-        arr[i+1] = arr[rt];
+
+        int temp = arr[i];
+        arr[i] = arr[rt];
         arr[rt] = temp;
 
-
-
-        return i+1;
+        return rt;
     }
 
     static void quickSort(int[] arr, int lf, int rt)
