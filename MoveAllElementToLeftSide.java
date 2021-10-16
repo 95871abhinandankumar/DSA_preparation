@@ -61,13 +61,13 @@ public class MoveAllElementToLeftSide
 
             while(i < j)
             {
-                while(arr[i] < 0)
+                while(i <= n-1 && arr[i] < 0)
                     i++;
                 
-                while(arr[j] > 0)
+                while(j >= 0 && arr[j] > 0)
                     j--;
                 
-                if(i < j && i < n-1 && j > 0)
+                if(i < j)
                 {
                     int temp = arr[i];
                     arr[i] = arr[j];
